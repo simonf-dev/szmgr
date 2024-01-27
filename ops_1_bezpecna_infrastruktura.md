@@ -47,15 +47,20 @@ Síťová bezpečnost zahrnuje také správu přístupu k síťovým zdrojům. T
 ## Kyberbezpečnostní hrozby a příklady útoků 
 ![](img/threat_vuln.png)
 
-Analýza rizik identifikuje možná rizika a identifikuje možná vylepšení. Útok je konkrétní akt prolomení bezpečnostních kontrol a vniku do systému, kde může udělat aktivní změny, nebo jen např. pasivně vytáhnout nějaká data. Útok nemusí být vždy úspěšný a může zůstat u stádia pokusu. Daný útok nemusí využívat jen jedné vulnerability/threatu, může se jednat o kombinaci, která dovolí útočníkovi proniknout do systému.
+Analýza rizik identifikuje možná rizika a identifikuje možná vylepšení. Útok je konkrétní akt prolomení bezpečnostních kontrol a vniku do systému, kde může udělat aktivní změny, nebo jen např. pasivně vytáhnout nějaká data. Útok nemusí být vždy úspěšný a může zůstat u stádia pokusu. Daný útok nemusí využívat jen jedné vulnerability/threatu, může se jednat o kombinaci, která dovolí útočníkovi proniknout do systému. U hrozeb je také dobré zohledňovat věci jako:
+- **Kontext** - proč se útočník snaží získat přístup nad systémem? Jaké může mít schopnosti a znalosti o našem systému?
+- **Mechanismy a indície** - z útoku sbíráme nějaká data, která potom analyzujeme, buď to jsou atomická data (třeba útočníkova IP), vypočítaná (celkový čas útoku), nebo behaviorální (co se na našem systému dělo divně?)
 
 ![](img/tactics.png)
-Na obrázku můžete vidět části konkrétního útoku. Příklad může být následovný:
-Taktika: Eskalace privilegií a získání přístupu nad systémem
-Technika: Využití vulnerability k prolomení SSH hesla uživatele + následné využití zastaralého balíčku v systému k získání sudo právům
-Procedury: SW pro slovníkový útok pomocí hesla + CLI daného balíčku k získání přístupu
 
-Existují různé katalogy technik, taktik atd. Nejdůležitější z nich je MITRE ATT&CK. Ten obsahuje matice taktik a technik. Daná společnost také hodnotí jednotlivé antiviry a protection software, jak velké množství daných hrozeb dokáže detekovat a reagovat na ně. Také hodnotí přesnost daného SW v popisu jednotlivých hrozeb
+Na obrázku můžete vidět části konkrétního útoku. Příklad může být následovný:
+- **Taktika**: Eskalace privilegií a získání kontroly nad systémem
+- **Technika**: Využití vulnerability k prolomení SSH hesla uživatele + následné využití zastaralého balíčku v systému k získání sudo práv
+- **Procedury**: SW pro slovníkový útok pomocí hesla + CLI daného balíčku k získání přístupu
+
+Existují různé katalogy technik, taktik atd. Nejdůležitější z nich je MITRE ATT&CK. Ten obsahuje matice taktik a technik. Daná společnost také hodnotí jednotlivé antiviry a protection software, jak velké množství daných hrozeb dokáže detekovat a reagovat na ně. Také hodnotí přesnost daného SW v popisu jednotlivých hrozeb. Příklad MITRE:
+- Taktika:  TA0001 – Initial Access tactic (taktika počiatočného prístupu)
+- Konkrétní technika: T1566.001 – Phishing: Spearphishing attachment (Phishing: Príloha pre spearphishing)
 
 Cyber threat hunting je proaktivní hledání nových hrozeb a možných útoků. Je velmi důležitý při hledání 0-day vulnerabilit. To jsou vulnerability, které nejsou veřejně známé, tudíž proti nim nejsou vydané security patche a jsou skrz to nebezpečné. Může se stát, že útočník má k dispozici danou vulnerabilitu několik měsíců/let, než ji odhalí tvůrce systému. Kombinaci 0-day vulnerabilit využíval například spyware Pegasus k ovládnutí celého systému chytrých telefonů. Společnosti vypisují bug bounty program, který má motivovat "hodné hackery" k hledání těchto chyb a jejich reportování společnostem. Ty jsou následně peněžně ohodnoceny firmami. Firmy dost často mívají i svůj red team, který má za úkol prolomit systém, chovat se jako útočník a reportovat zjištěné slabiny.
 
