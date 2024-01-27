@@ -115,6 +115,14 @@ využili clusterovací výhody služby.
 **CosmosDB**:
 
 Příklad využití: Globálně distribuované aplikace, které vyžadují nízkou latenci a škálovatelnost, jako jsou mobilní aplikace, webové aplikace a herní služby s požadavky na velmi rychlé čtení a zápis dat. Nejvíc podobná Azure Table Storage, ale poskytuje konzistenci dat. Je trošku dražší a těžší na implementaci.
+Zaručuje 5 různých úrovní konzistence (dost souvisí s NoSQL+distribuovanými systémy):
+- **Strong**: Zajišťuje, že čtení vždy vrátí nejaktuálnější zápis, což je ideální pro aplikace vyžadující absolutní konzistenci, ale může to zvýšit latenci.
+- **Bounded Staleness**: Umožňuje omezené zpoždění mezi zápisem a jeho viditelností pro čtení, poskytující konzistenci s mírnou tolerancí pro zastaralost dat. Hlavně mezi uzly v jiných částech světa/availability zónách.
+- **Session**: Zajišťuje, že čtení v rámci jedné relace vidí konzistentní stav, včetně všech posledních zápisů této relace.
+-- **Consistent Prefix**: Čtení vidí zápisy v pořadí, v jakém byly provedeny, což eliminuje nekonzistence, ale nezajišťuje nejaktuálnější data. Nevíme, kdy data budou updatována, ale víme, že budou ve správném pořadí.
+-- **Eventual**: Nabízí nejvyšší dostupnost a nejnižší latenci, ale bez záruky okamžité konzistence. Data můžou být mezi další uzly replikována v nahodilém pořadí.
+
+Doporučuju video: https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels
 
 **Redis Cache**:
 
