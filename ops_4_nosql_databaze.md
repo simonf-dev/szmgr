@@ -130,3 +130,9 @@ viz  [otázka 7](./7_distribuovane_systemy.md#rozd%C3%ADl-mezi-centralizovanou-a
 - oproti SQL mají např. dobře implementovatelný tranzitivní uzávěr
 - grafové databáze jsou o dost víc často centralizované oproti předchozím typům
 - Grafová databáze je vhodná pro situace, kde je potřeba aktualizovat mnoho entit současně a provádět komplexní analytické dotazy, ale může být méně vhodná pro manipulaci s velkými binárními objekty, zpracování obrovských datových sad a v případech, kde je distribuce grafu náročná.
+- Grafové databáze jsou neoptimalizované pro dotazy vyžadující rozsáhlé agregace, full-table scany, komplexní JOIN operace a analytické dotazy nezávislé na vztazích mezi daty, protože jsou primárně navrženy pro efektivní procházení a analýzu vztahů mezi entitami.
+
+
+
+
+
