@@ -127,4 +127,5 @@ viz  [otázka 7](./7_distribuovane_systemy.md#rozd%C3%ADl-mezi-centralizovanou-a
 - vztahy mezi uzly můžou patřit do nějakých rodin, můžou být také směrované
 - můžeme vytvořit nějaké labely se jménem a přiřadit jim uzly
 - cesta potom je nějaká konkrétní cesta z uzlu A do B pomocí hran a vztahů, hledá se nějaký podgraf, nebo cesta
+- grafové databáze jsou o dost víc často centralizované oproti předchozím typům
 - Grafová databáze je vhodná pro situace, kde je potřeba aktualizovat mnoho entit současně a provádět komplexní analytické dotazy, ale může být méně vhodná pro manipulaci s velkými binárními objekty, zpracování obrovských datových sad a v případech, kde je distribuce grafu náročná.
