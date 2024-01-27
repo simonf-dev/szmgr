@@ -124,8 +124,9 @@ viz  [otázka 7](./7_distribuovane_systemy.md#rozd%C3%ADl-mezi-centralizovanou-a
 - populární je Neo4J -> dokáže aplikovat ACID jako SQL, což se dost liší od dalších DB, které jsou spíše BASE
 - uzel v Neo4J je jednotka, která má nějaké vlastnosti a může mít vztahy s ostatními uzly, vztahy mají taky vlastnosti
 - vlastnost má klíč a k němu hodnotu
-- vztahy mezi uzly můžou patřit do nějakých rodin, můžou být také směrované
+- vztahy mezi uzly mají nějaký typ, můžou být také směrované
 - můžeme vytvořit nějaké labely se jménem a přiřadit jim uzly
 - cesta potom je nějaká konkrétní cesta z uzlu A do B pomocí hran a vztahů, hledá se nějaký podgraf, nebo cesta
+- oproti SQL mají např. dobře implementovatelný tranzitivní uzávěr
 - grafové databáze jsou o dost víc často centralizované oproti předchozím typům
 - Grafová databáze je vhodná pro situace, kde je potřeba aktualizovat mnoho entit současně a provádět komplexní analytické dotazy, ale může být méně vhodná pro manipulaci s velkými binárními objekty, zpracování obrovských datových sad a v případech, kde je distribuce grafu náročná.
