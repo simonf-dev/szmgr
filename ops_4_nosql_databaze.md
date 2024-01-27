@@ -115,7 +115,7 @@ viz  [otázka 7](./7_distribuovane_systemy.md#rozd%C3%ADl-mezi-centralizovanou-a
 - mají několik typů zápisu:
 1) **Adjacency Matrix** - každý uzel je řádek a má 1/0 u sloupce - index sloupce značí další uzel a 0/1 pokud obsahuje hranu, když jsou hrany bez směrů, tak je matice totožná přes uhlopříčku, jinak dokážeme zaznamenat, jestli vede hrana do uzlu, nebo z uzlu - můžeme přidávat i hodnoty/váhy hran -> u vlastností to může být třeba bitmapa, má velmi optimalizované dotazy na existující hranu a případně její hodnotu, také na přidávání, nevýhody jsou v zabírání místa
 2) **Adjacency list** - množina seznamů, u každého uzlu je odkaz na uzel, na který ukazuje a případně hodnota hrany, zabírá méně místa v grafech, kde není moc hran a efektivní přidávání uzlů, při grafu, kde je více hran může být neefektivní dotaz, jestli uzel A obsahuje hranu do uzlu B -> optimalizace v setřízených listech
-3) **Incidence matrix** - tabulka počet vrcholů x počet uzlů, je výhoda, když chceme znázornit, že jedna hrana spojuje víc uzlů -> **hypergrafy**
+3) **Incidence matrix** - tabulka počet vrcholů x počet hran, je výhoda, když chceme znázornit, že jedna hrana spojuje víc uzlů -> **hypergrafy**
 - existují metody, jak upravit graf -> **BFS** - spustíme BFS od kořene a upravíme graf podle pořadí, umožňuje optimalizovaný průchod od kořene, horší, když chceme potom procházet od jiných prvků, čím níž tím horší
 - **Graph partitioning** - snažíme se rozdělit graf na menší skupiny, aby mezi sebou sdíleli co nejméně hran, nebo uzlů -> to nám pomůže při paralelním zpracování
 - jsou jednorelační grafy, kdy všechny hrany představují určitou vlastnost, nebo můžou potom obsahovat množinu různých atributů,
