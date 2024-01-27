@@ -94,6 +94,7 @@ viz  [otázka 7](./7_distribuovane_systemy.md#rozd%C3%ADl-mezi-centralizovanou-a
 - data jsou podle indexů seřazena na uzlech a tyto operace jsou efektivní
 - můžeme mít jednoklíčový index, jejich směs, konkrétní hodnoty v polích atd.
 - pokud máme špatně nastavené indexy, tak se obíráme o možnosti NoSQL databází, protože pro dotaz musíme procházet všechny nodes a zatěžujeme je tak
+- podporuje MapReduce, velmi užitečné, pokud děláme agregace na všechny data, nebo na jejich rozsahy -> každý uzel si zpracuje svoji část
 ### Column-family
 ![](img/cassandra.png)
 - sloupec je definován většinou jako key-value (název sloupce a jeho hodnota), řádek může libovolný počet sloupců
