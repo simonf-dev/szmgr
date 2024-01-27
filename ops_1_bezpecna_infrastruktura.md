@@ -91,10 +91,6 @@ Spyware má za úkol např. špehovat uživatele a odkrývat citlivé informace,
 
 - **Dostupnost (Availability)**: Tento princip zajišťuje, že data a informační systémy jsou dostupné a funkční pro oprávněné uživatele, když jsou potřeba. Dostupnost se zajistí pomocí redundance systémů, efektivního řízení síťových zdrojů, a plánováním obnovy po haváriích a katastrofách. Mezi útoky na dostupnost patří například ransomware, který znemožňuje fungování organizace a vyžaduje výkupné. Nejjednodušší a velmi klasický útok na dostupnost je potom DDOS.
 
-- Každá organizace by měla mít **program informační bezpečnosti**. Ten zahrnuje celkové pojetí, pravidla, postupy ohledně bezpečnosti organizace. Měl by být nastavený tak, aby dostatečně chránil organizaci před riziky a zároveň ji umožňoval růst.
-- Řízení bezpečnosti obsahuje potom všechny činnosti, aby program informační bezpečnosti fungoval a vyvíjel se. Na základě kontextu se posoudí rizika, vyřeší se, nebo se přijmou a monitorují. Může se dělat podobná matice rizik jako u projektového řízení.
-- ISO/IEC 27000 je sada mezinárodních norem pro řízení informační bezpečnosti, zaměřená na nastavení bezpečnostních procesů a politik v organizacích. Speciální publikace NIST 800-3 nabízí pokyny pro implementaci bezpečnostních opatření a řízení rizik v informačních systémech v souladu s americkými národními standardy.
-- **Bezpečnostní dokumentace** obsahuje nějaké základní zásady, normy, podle kterých se může personál řídit
 Při návrhu bezpečnostních mechanismů je třeba brát v úvahu tyto důležité body:
 1. **Identifikace rizik a hrozeb**
 
@@ -108,23 +104,24 @@ Po identifikaci je důležité zvolit taktiku, kterou zvolíme pro zvýšení be
 
 Následně zvolíme vhodné konkrétní nástroje a postupy, které aplikujeme. Můžeme vybrat konkrétní firewall, můžeme využít služby cloudu, které dané služby nabízí
 
-
 #### Program informační bezpečnosti
-**Program informační bezpečnosti** je komplexní rámec zahrnující různé aspekty, jako jsou logické, administrativní a fyzické ochranné mechanismy, procesy, obchodní postupy a lidé, kteří spolupracují na zajištění ochrany prostředí. Hlavními cíli jsou:
+- Každá organizace by měla mít **program informační bezpečnosti**. Ten zahrnuje celkové pojetí, pravidla, postupy ohledně bezpečnosti organizace. Měl by být nastavený tak, aby dostatečně chránil organizaci před riziky a zároveň ji umožňoval růst.
 
-**Rovnováha mezi bezpečností a funkčností**: Program by měl vyvážit potřeby zabezpečení a podnikové funkčnosti, aby nedocházelo k negativnímu dopadu na produktivitu.
+- Řízení bezpečnosti obsahuje potom všechny činnosti, aby program informační bezpečnosti fungoval a vyvíjel se. Na základě kontextu se posoudí rizika, vyřeší se, nebo se přijmou a monitorují. Může se dělat podobná matice rizik jako u projektového řízení.
 
-**Komplexní přístup**: Všechny prvky - lidé, procesy, data a technologie - musí být chráněny. Bezpečnost zahrnuje nejen technická řešení, ale i správné chování a postupy.
+- **Rovnováha mezi bezpečností a funkčností**: Program by měl vyvážit potřeby zabezpečení a podnikové funkčnosti, aby nedocházelo k negativnímu dopadu na produktivitu.
 
-**Řízení rizik**: Obsahuje několik kroků, včetně posouzení a řešení rizik, a zahrnuje použití nástrojů jako je matice hodnocení rizik pro vizuální hodnocení a prioritizaci rizik.
+- **Komplexní přístup**: Všechny prvky - lidé, procesy, data a technologie - musí být chráněny. Bezpečnost zahrnuje nejen technická řešení, ale i správné chování a postupy.
 
-**Bezpečnostní dokumentace**: Zahrnuje politiky, standardy, směrnice a postupy, které pomáhají zaměstnancům při správném rozhodování a dodržování právních požadavků.
+- **Řízení rizik**: Obsahuje několik kroků, včetně posouzení a řešení rizik, a zahrnuje použití nástrojů jako je matice hodnocení rizik pro vizuální hodnocení a prioritizaci rizik.
 
-**Standardy a frameworky**: Program by měl být založen na standardizovaných bezpečnostních frameworkách, jako je ISO/IEC 27000 nebo NIST 800-39, a musí být přizpůsoben podle potřeb organizace.
+- **Bezpečnostní dokumentace**: Zahrnuje politiky, standardy, směrnice a postupy, které pomáhají zaměstnancům při správném rozhodování a dodržování právních požadavků.
 
-**Životní cyklus bezpečnostního programu**: Zahrnuje plánování, implementaci, provoz, monitorování a vyhodnocování, aby se zajistilo, že bezpečnostní opatření jsou vždy aktuální a efektivní.
+- **Standardy a frameworky**: Program by měl být založen na standardizovaných bezpečnostních frameworkách, jako je ISO/IEC 27000 nebo NIST 800-39, a musí být přizpůsoben podle potřeb organizace. ISO/IEC 27000 je sada mezinárodních norem pro řízení informační bezpečnosti, zaměřená na nastavení bezpečnostních procesů a politik v organizacích. Speciální publikace NIST 800-3 nabízí pokyny pro implementaci bezpečnostních opatření a řízení rizik v informačních systémech v souladu s americkými národními standardy.
 
-Celkově program informační bezpečnosti vyžaduje komplexní a integrovaný přístup, který spojuje technické, organizační a lidské faktory k efektivní ochraně informací.
+- **Životní cyklus bezpečnostního programu**: Zahrnuje plánování, implementaci, provoz, monitorování a vyhodnocování, aby se zajistilo, že bezpečnostní opatření jsou vždy aktuální a efektivní.
+
+- **Bezpečnostní politika (security policy)** je dokument na vysoké úrovni, který nastiňuje bezpečnostní směrnice vrcholového managementu. Termín politika se také používá k označení specifických bezpečnostních pravidel pro konkrétní systémy.
 
 #### Příklady
 ##### Firewall
