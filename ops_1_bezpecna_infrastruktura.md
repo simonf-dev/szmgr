@@ -77,8 +77,9 @@ Existují různé katalogy technik, taktik atd. Nejdůležitější z nich je MI
 - DDOS - cílem těchto útoků je přetížit webové servery nebo sítě tak, aby se staly nedostupnými pro legitimní uživatele. Například v roce 2016 byl proveden masivní DDoS útok na službu Dyn, což vedlo k výpadku mnoha velkých webových stránek, včetně Twitteru a Netflixe.
 - Insider threats - tyto hrozby pochází od jedinců uvnitř organizace, kteří zneužívají svůj přístup k citlivým informacím. Jeden z nejznámějších případů je Edward Snowden, který v roce 2013 ukradl a zveřejnil tajné dokumenty NSA.
 - Lateral movement - útočníci používají k rozšíření svého dosahu v rámci síťové infrastruktury oběti po počátečním průniku. Tento pohyb umožňuje útočníkům získat přístup k dalším systémům a zdrojům v síti, často s cílem získat citlivé informace, způsobit škody nebo připravit terén pro další útoky.
+- Advanced persistent threats - útok se snaží schovat, být v systému co nejdéle a odposlouchávat data, případně se z daných dat učit, jak co nejefektivněji provést poslední fázi útoku a uškodit co nejvíce, bývají to nejpromyšlenější útoky hlavně na větší organizace
 
-Existuje software, který dokáže jednotlivé útoky monitorovat a detekovat (detect) a v případě zájmu uživatele i udělat protiakci. Může se jednat o zablokování malware souborů s negativním hashem, zablokování škodlivého procesu, revert souborů u ransomware atd.
+Existuje software, který dokáže jednotlivé útoky monitorovat a detekovat a v případě zájmu uživatele i udělat protiakci. Může se jednat o zablokování malware souborů s negativním hashem, zablokování škodlivého procesu, revert souborů u ransomware atd. Jedná se o EDR (Endpoint Detection and Response).
 
 ## Návrh bezpečnostních mechanismů
 Proces vytváření systémů, procesů a nástrojů, které chrání data, sítě a systémy před neoprávněným přístupem, zneužitím, ztrátou, změnou nebo poškozením
