@@ -10,7 +10,7 @@ Cloud computing nabízí několik klíčových výhod, jako je snížení nákla
 ## IaaS, PaaS, SaaS
 ![](img/cloud_models.png)
 #### IaaS (Infrastructure as a Service)
-- **Definice**: Poskytuje výpočetní výkon, disková úložiště, síťová řešení atd. Můžeme si například na cloudu rezervovat VM s určitým provisioned HW a operačním systémem.
+- **Definice**: Poskytuje výpočetní výkon, disková úložiště, síťová řešení atd. Můžeme si například na cloudu rezervovat VM s určitým provisioned HW a operačním systémem. Můžeme si vytvořit i nějakou template s připravenými balíčky a tu potom nasazovat.
 - **Funkce**: Alokuje virtuální stroje (VM) podle požadavků zákazníka, odstínění od manuálního nastavení sítě, firewallu a hardwaru. Samotný software jako instalace dockeru a nastavování prostředí pro aplikaci řešíme už sami.
 - **Zodpovědnost zákazníka**: Správa operačního systému a vyšších vrstev infrastruktury. Musíme sami instalovat potřebný software, aktualizovat systém a SW. Částečně i nastavování síťových pravidel atd.
 - **Výhody**: Stabilita (provideři mají většinou implementovanou high availability, kterou bychom u klasické VM nedostali), jednoduchá vertikální škálovatelnost (dokážeme celkem jednoduše přidat HW pro virtualizaci a zaplatit více), nemusíme spravovat vlastní hardware. Oproti on-premise nulové počáteční investice do HW a možnost platby podle aktuálního vytížení systému.
@@ -119,8 +119,8 @@ Zaručuje 5 různých úrovní konzistence (dost souvisí s NoSQL+distribuovaný
 - **Strong**: Zajišťuje, že čtení vždy vrátí nejaktuálnější zápis, což je ideální pro aplikace vyžadující absolutní konzistenci, ale může to zvýšit latenci.
 - **Bounded Staleness**: Umožňuje omezené zpoždění mezi zápisem a jeho viditelností pro čtení, poskytující konzistenci s mírnou tolerancí pro zastaralost dat. Hlavně mezi uzly v jiných částech světa/availability zónách.
 - **Session**: Zajišťuje, že čtení v rámci jedné relace vidí konzistentní stav, včetně všech posledních zápisů této relace.
--- **Consistent Prefix**: Čtení vidí zápisy v pořadí, v jakém byly provedeny, což eliminuje nekonzistence, ale nezajišťuje nejaktuálnější data. Nevíme, kdy data budou updatována, ale víme, že budou ve správném pořadí.
--- **Eventual**: Nabízí nejvyšší dostupnost a nejnižší latenci, ale bez záruky okamžité konzistence. Data můžou být mezi další uzly replikována v nahodilém pořadí.
+- **Consistent Prefix**: Čtení vidí zápisy v pořadí, v jakém byly provedeny, což eliminuje nekonzistence, ale nezajišťuje nejaktuálnější data. Nevíme, kdy data budou updatována, ale víme, že budou ve správném pořadí.
+- **Eventual**: Nabízí nejvyšší dostupnost a nejnižší latenci, ale bez záruky okamžité konzistence. Data můžou být mezi další uzly replikována v nahodilém pořadí.
 
 Doporučuju video: https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels
 
