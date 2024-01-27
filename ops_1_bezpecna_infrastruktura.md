@@ -83,14 +83,18 @@ Existuje software, který dokáže jednotlivé útoky monitorovat a detekovat a 
 
 ## Návrh bezpečnostních mechanismů
 Proces vytváření systémů, procesů a nástrojů, které chrání data, sítě a systémy před neoprávněným přístupem, zneužitím, ztrátou, změnou nebo poškozením
-Důvěrnost (Confidentiality): 
+- **Důvěrnost (Confidentiality)**: 
 Tento princip se týká ochrany informací před neautorizovaným přístupem nebo zveřejněním. Cílem je zajistit, aby měly k citlivým datům přístup pouze oprávněné osoby. To se obvykle dosahuje pomocí metod jako jsou šifrování, kontrola přístupu a autentizační protokoly. Mezi typ útoků, který nabouráva důvěrnost je například spyware.
 Spyware má za úkol např. špehovat uživatele a odkrývat citlivé informace, ke kterým by měli mít přístup jen autorizované osoby.
 
-Integrita (Integrity): Integrita zajišťuje, že data nejsou změněna nebo poškozena v neautorizovaném procesu. To zahrnuje ochranu proti neoprávněnému nebo náhodnému úpravě dat. Mechanismy zajišťující integritu zahrnuje hashování, digitální podpisy a systémy pro správu verzí. Při monitoringu systému se dosta často používá i kontrola hashování jednotlivých souborů.
+- **Integrita (Integrity)**: Integrita zajišťuje, že data nejsou změněna nebo poškozena v neautorizovaném procesu. To zahrnuje ochranu proti neoprávněnému nebo náhodnému úpravě dat. Mechanismy zajišťující integritu zahrnuje hashování, digitální podpisy a systémy pro správu verzí. Při monitoringu systému se dosta často používá i kontrola hashování jednotlivých souborů.
 
-Dostupnost (Availability): Tento princip zajišťuje, že data a informační systémy jsou dostupné a funkční pro oprávněné uživatele, když jsou potřeba. Dostupnost se zajistí pomocí redundance systémů, efektivního řízení síťových zdrojů, a plánováním obnovy po haváriích a katastrofách. Mezi útoky na dostupnost patří například ransomware, který znemožňuje fungování organizace a vyžaduje výkupné. Nejjednodušší a velmi klasický útok na dostupnost je potom DDOS.
+- **Dostupnost (Availability)**: Tento princip zajišťuje, že data a informační systémy jsou dostupné a funkční pro oprávněné uživatele, když jsou potřeba. Dostupnost se zajistí pomocí redundance systémů, efektivního řízení síťových zdrojů, a plánováním obnovy po haváriích a katastrofách. Mezi útoky na dostupnost patří například ransomware, který znemožňuje fungování organizace a vyžaduje výkupné. Nejjednodušší a velmi klasický útok na dostupnost je potom DDOS.
 
+- Každá organizace by měla mít **program informační bezpečnosti**. Ten zahrnuje celkové pojetí, pravidla, postupy ohledně bezpečnosti organizace. Měl by být nastavený tak, aby dostatečně chránil organizaci před riziky a zároveň ji umožňoval růst.
+- Řízení bezpečnosti obsahuje potom všechny činnosti, aby program informační bezpečnosti fungoval a vyvíjel se. Na základě kontextu se posoudí rizika, vyřeší se, nebo se přijmou a monitorují. Může se dělat podobná matice rizik jako u projektového řízení.
+- ISO/IEC 27000 je sada mezinárodních norem pro řízení informační bezpečnosti, zaměřená na nastavení bezpečnostních procesů a politik v organizacích. Speciální publikace NIST 800-3 nabízí pokyny pro implementaci bezpečnostních opatření a řízení rizik v informačních systémech v souladu s americkými národními standardy.
+- **Bezpečnostní dokumentace** obsahuje nějaké základní zásady, normy, podle kterých se může personál řídit
 Při návrhu bezpečnostních mechanismů je třeba brát v úvahu tyto důležité body:
 1. **Identifikace rizik a hrozeb**
 
