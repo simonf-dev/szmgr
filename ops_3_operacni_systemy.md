@@ -9,8 +9,10 @@ Vypracoval @simonf-dev
   - identifikují se zařízení jako CPU, disky a spouští se primární zavaděč
   - primární zavaděč je malý program na začátku boot disku
   - poté je spuštěn sekundární zavaděč, ten má načíst jádro
-  - nastartuje se jádro, které vytvoří proces 0, inicializuje periferie atd.
+  - nastartuje se jádro, které vytvoří proces 0, inicializuje se periferie, virtuální paměť, CPU, konzole, sběrnice, připojí se kořenového systému souboru a potom se začne inicializovat uživatelský prostor
 - jádro je monolitické, takže má většinu svých funkcionalit v jádře, další typy jsou modulární jádro a mikrojádro
+- v UNIX systémech je snaha všechno reprezentovat jako soubory (zařízení, sockety, informace o procesech)
+
 
 ### Správa paměti
 - paměť spravována pomocí virtuálních adres, ty jsou mapované na fyzické adresy
@@ -23,3 +25,12 @@ Vypracoval @simonf-dev
 - u liného načítání programu se stránka načte až ve chvíli, kdy ji potřebujeme, vhodné, pokud nechceme přistupovat ke všem datům
 - v C jazyku si můžeme alokovat jednotlivé byty pomocí malloc, nebo potom celé stránky vmalloc
 - speciální adresy jsou sběrnicové
+
+### Správa zařízení
+- zařízení jsou uloženy ve speciálních souborech, dané soubory mají hlavní a vedlejší číslo -> hlavní je číslo ovladače a vedlejší číslo je interní číslo pro ovladač k rozpoznání zařízení
+- k zobrazení informací o speciálním souboru můžeme použít **stat**, k vytvoření takového souboru potom **mknod**
+- zařízení jsou pojmenovány podle nějakých pravidel, může to být topologie, výrobce, pořadí zapojení, výrobní číslo -> každé z nich má výhody i nevýhody
+- pro informace o zařízeních se používá hlavně SysFS, má adresáře podle různých typů pojmenování, poskytuje informace o zařízeních, zpřístupňuje soubory, pomocí kterých můžeme komunikovat s ovladačem
+- většinou v adresáři /dev, pro zařízení v uživatelském prostoru potom /udev
+
+  
