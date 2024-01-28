@@ -35,7 +35,6 @@ Vypracoval @simonf-dev
 - většinou v adresáři /dev, pro zařízení v uživatelském prostoru potom /udev
 
 ## Základní konfigurace a správa uživatelů
-- **ifconfig** cmd poskytuje informace o síťových rozhraních, můžeme je aktivovat, deaktivovat, nastavovat různé režimy, **route** nám přidá síť k rozhraní
 - **chmod** poskytuje konfiguraci souborů a to i systémových
 - v UNIX existují i startovací skripty **init**,nebo **systemd** -> systemd nabízí víc možností na konfiguraci, logování, init je ve formě klasického shell skriptu
 - konfigurace se nachází ve složce **/etc**, jsou tam nastavení pro jednotlivé aplikace, hesla, resolvování hostů atd.
@@ -73,3 +72,15 @@ Vypracoval @simonf-dev
   - requisite - selže a skončí hned
   - sufficient - dostačuje pro celou autentizaci
   - optional- nepovinné
+## Síťové služby
+- **ifconfig** cmd poskytuje informace o síťových rozhraních, můžeme je aktivovat, deaktivovat, nastavovat různé režimy, **route** nám přidá síť k rozhraní
+### Sockety
+- základní nástroj pro komunikaci po síti, mezi procesy atd.
+- je to deskriptor a jeden konec spojení
+- má speciální služby jako sendmsg, recvmsg atd.
+- při vytváření definujeme doménu (jestli je to síťový socket, lokální UNIX socket atd.), definujeme sémantiku socketu, jestli se komunikuje jako stream dat, nebo přes datagramy atd.
+- pro kombinaci domény a sémantiky většinou potom existuje konkrétní protokkol jako IP, ICMP, TCP atd., od systému si můžeme vyžádat tabulku protokolů, které je většinou i v **/etc/protocols**
+- sockety také mohou sloužit jako nepojmenovaná roura na komunikaci
+- sockety adresujeme podle jejich domény, pro AF_UNIX to je soubor a sémantika, pro AF_INET potom ip adresa, port  atd.
+- socket vytvoříme a potom mu pomocí funkce **bind** přiřadíme port a adresu na které má naslouchat, pokud se jedná o klientský socket, můžeme mu nastavit i proti adresu - u serverového socketu většinou posloucháme všechnu komunikaci na daném portu
+- některé porty mají přiřazený typ komunikace, která by na nich měla probíhat jako 21/tcp je ftp
