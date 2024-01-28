@@ -15,6 +15,7 @@ Vypracoval @simonf-dev
 
 
 ### Správa paměti
+![](img/sprava_pameti.png)
 - paměť spravována pomocí virtuálních adres, ty jsou mapované na fyzické adresy
 - každý proces má svou tabulku virtuálních adres, která se používá pro překlad
 - paměť jádra je namapovaná do každé tabulky
@@ -33,4 +34,42 @@ Vypracoval @simonf-dev
 - pro informace o zařízeních se používá hlavně SysFS, má adresáře podle různých typů pojmenování, poskytuje informace o zařízeních, zpřístupňuje soubory, pomocí kterých můžeme komunikovat s ovladačem
 - většinou v adresáři /dev, pro zařízení v uživatelském prostoru potom /udev
 
-  
+## Základní konfigurace a správa uživatelů
+- **ifconfig** cmd poskytuje informace o síťových rozhraních, můžeme je aktivovat, deaktivovat, nastavovat různé režimy, **route** nám přidá síť k rozhraní
+- **chmod** poskytuje konfiguraci souborů a to i systémových
+- v UNIX existují i startovací skripty **init**,nebo **systemd** -> systemd nabízí víc možností na konfiguraci, logování, init je ve formě klasického shell skriptu
+- konfigurace se nachází ve složce **/etc**, jsou tam nastavení pro jednotlivé aplikace, hesla, resolvování hostů atd.
+- základní tabulka uživatelů v **/etc/passwd**, je tam jméno uživatele, heslo v zahashované podobě, UID, GID, GECOS, domovský adresář a shell -> **/etc/group** to stejn0 pro skupiny
+- **/var/run/utmp** obsahuje právě přihlášené uživatele
+### Instalace
+1) spuštění jádra
+2) pro instalaci se vytvoří malý souborový systém
+3) disk se rozdělí na oblasti a vytvoří se souborové systémy, také se vytvoří swap prostor
+4) nakonfiguruje se hardware
+5) začnou se instalovat jednotlivé balíčky
+6) proběhne postinstalační konfigurace
+### Rozložení adresářů
+- **/bin** – uživatelské programy potřebné pro jednouživatelský program
+- **/boot** –zavaděč systému, může být jako samostatný svazek
+- **/dev** – speciální soubory
+- **/etc** – konfigurační soubory
+- **/lib** – sdílené knihovny
+- **/mnt** – dočasně připojované svazky
+- **/opt** – velké sw balíky
+- **/sbin** – systémové programy
+- **/tmp** – dočasné malé soubory
+- **/usr** - sdílené soubory uživatelů, také obsahuje podsložky jako bin,lib,sbin
+- **/var** - obsahuje soubory, co se mění, jako logy, balíky, soubory které jsou potřeba k běžícím programům atd.
+### PAM
+- modulární přístup k autentizaci, můžeme si dodělat vlastní autentizaci např. pomocí biometrik, čipových kart, dodat vlastní nastavení
+- v souboru pam.conf se definují jednotlivé kroky autentizaci a knihovny, které se mají použít
+- fáze autentizace:
+  - account - kontrola, jestli má uživatel účet a může přistupovat ke službě
+  - auth - samotná fáze autentizace
+  - password - změny autentizačních mechanismů
+  - session - akce před zpřístupněním služby a po ukončení
+- potom definujeme řídící hodnoty:
+  - required - jestli selže, selže celá autentizace
+  - requisite - selže a skončí hned
+  - sufficient - dostačuje pro celou autentizaci
+  - optional- nepovinné
