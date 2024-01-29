@@ -93,7 +93,7 @@ Vypracoval @simonf-dev
 - v souboru /etc/resolv.conf jsou obsaženy DNS servery, které jsou použity pro překlad stringových adres na IP adresy -> neplést si s hostname, to je určeno pro lokální síť
 - **NFS** je určený ke sdílení souborů po síti, můžeme ho namountovat jako lokální disk, ale má omezení, např. v zamkykání pomocí existencí souboru
 - **Port mapper** - takový telefonní seznam pro RPC služby, poskytuje správné přesměrování RPC volání na správné porty, hlavní port je 111 TCP/UDP, ale dané služby můžou běžet někde jinde
-## Principy vývoje a vývojové prostředí v UNIXu
+## Principy vývoje a vývojové prostředí v UNIXu, práce s procesy, se soubory, vstupní/výstupní operace
 - pokud chceme vyvíjet v kompilovaném jazyce a převádět náš kód na strojový kód, tak je třeba nutné použít kompilátor a celý proces se skládá z těchto kroků:
   - preprocesor - odstraní komentáře, rozbalí se makra, podmíněné kompilace - vznikne čistý zdrojový kód
   - kompilace - překládá se do mezikódu, analyzuje se syntax a sémantika, kontroluje chyby a provádí optimalizace, již většinou udělá kód specifický pro procesor/platformu
@@ -139,4 +139,42 @@ Vypracoval @simonf-dev
 - speciální typ procesu běžící na pozadí
 - většinou odpojedný od sezení, tudíž může běžet nezávisle na tom, když je sezení ukončeno
 - většinou se u nového procesu zavolá setsid (odpojení od sezení), pracovní adresář se změni na / (neblokuje mazaní adresářů), uzavřou se soubory, které má mít rzervované, std. deskriptory přesměrovány do null
+
+### Soubory
+- UNIX říká, že skoro vše je soubor
+- deskriptor je číslo, který ukazuje na otevřený soubor
+- základní deskriptoy 0-STDIN_FILENO, 1-STDOUT_FILENO, 2-STDERR_FILENO - lze je přesměrovat pro daný proces, kam chceme
+- různé nastavení u otvírání souboru (append, přepis atd.)
+- deskriptory můžeme uzavírat, číst z nich, psát a také posouvat ukazatel po souboru -> příkaz **lseek**
+#### I-node
+- struktura která popisuje soubor, uchovává si o něm atributy jako:
+  - délka
+  - typ
+  - UID a GUID
+  - přístupy
+  - počet odkazů
+  - odkaz na datové bloky
+- informace o uzlu můžeme dostat pomocí příkazu **stat**
+- jsou různé typy souborů, protože jak bylo zmíněno, skoro vše je v UNIX soubor - speciální znakové a blokové soubory, symbolický link, socket, nebo roura
+- set-uid a set-gid bity jsou bity, které mi nastaví efektivní id na vlastníka souboru, pokud je spuštěn, sticky bit zase omezuje mazání cízích souborů v adresáři
+- nové soubory vznikají podle efektivního id procesu a skupina podle adresáře, nebo procesu
+- můžeme definovat masku u tvorby -> vynulují se práva z masky
+- právo se většinou značí jako součet 4 - write, 2 - read, 1 - execute
+- **chown, chmod** - příkazy na manipulaci s vlastníkem a právy
+- jde vytvářet více linků na uzel pomocí **link** - i-node je odstraněn až na něj neexistuje žádný odkaz
+- jsou i symbolické linky, ty ale nevytvářejí odkaz
+- v /tmp a /var/tmp vytváříme dočasné soubory, které jsou pomocí sticky bitu -> tmp soubory jsou většinou smazány na konci procesu, nebo po nějaké době
+#### Adresář
+- je to taky soubor
+- taky tvořen i-node
+- je organizován pomocí pole, stromu - specifické u OS
+- má aspoň dva odkazy na sebe a rodiče -> důležité, aby se adresář neztratil v systému
+- každý proces má svůj pracovní adresář (tam hledá relativní cesty, pokuď chce číst, nebo vytvářet soubory)
+#### ACL (Access control lists)
+- umožňuje specifikovat pravidla pro jednotlivé uživatele - nadstavba na klasickým UGO
+- obsahuje i pravidla pro dědičnost pravidel - komplexní
+- můžou přepisovat, nebo doplňovat klasická UGO pravidla
+- vhodné ve složitějších systémech s více uživateli -> můžeme používat i skupiny, ale složitější a větší náchylnost k chybám
+- ukázka záznamu: u:bob:rwx,g:wheel:rw-,m::rx
+- u vyhodnocování se prvně hledají efektivní UID, GID a doplňkové GID procesu, pokud nenajde, tak vyhodnotí jako o
 
