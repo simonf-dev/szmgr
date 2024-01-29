@@ -113,4 +113,30 @@ Vypracoval @simonf-dev
 - pokud nalinkujeme staticky, tak do zdrojového kódu našeho programu přidáme všechny potřebné funkce -> není efektivní, ale program je dá se říct nezávislý
 - když dynamicky linkujeme v době kompilace, tak má program rychlejší start, ale je těžší zaručit, že je k dispozici správná verze knihovny, nedá už se nic měnit během běhu, problém s verzemi
 - formát **ELF** poskytuje křížové odkazy během běhu, můžeme mít více verzí atd.
-- C používá hlavičkové soubory, které poskytují interface ke knihovnám 
+- C používá hlavičkové soubory, které poskytují interface ke knihovnám
+### Procesy
+- nějaký běžící program
+- má atributy jako stav, program counter (kde se proces nachází v paměti), číslo procesu, rodič, priorita, vlastník atd.
+- může se skládat z více vláken, mají stejnou paměť, ale jiný zásobník
+- každý proces obsahuje i paměť jádra, přepne se oprávnění a vyvolává se kód v jádru -> oprávnění spravuje samotný kernel
+- procesy mezi sebou můžou sdílet paměť, většinou do ní nezapisují, může však sloužit i ke komunikaci mezi procesy
+- pokud chci vytvořit potomka procesu, použiju funkci fork -> proces dědí skoro všechno, kromě pid, ppid, zámky na souborech a pár dalších věcí
+- při forku se většinou udělá copy-on-write paměť -> procesy sdílí paměť, jakmile chce jeden z nich něco změnit, tak se daná paměť překopíruje -> šetří se místo a je více efektivní
+- rodič může potomka monitorovat, nebo čekat na ukončení pomocí **wait**
+- **exec** načtu jiný program do současného procesu, nevzniká nový, tudíž se přepíše
+- proces má 3 UID - reálné, efektivní a uložené - reálné je ten, kdo spustil proces (může měnit jen root), efektivní většinou stejné jako reálné (když ale spouštím pomocí sudo, tak se změní na superuživatelské) - podle efektivního se kontrolují operace (oprávnění na různé akce atd.), uložené slouží jako záloha, když se manipuluje s efektivním id
+- obsahuje i doplňková group ID
+- systém si u procesu pamatuje, kolik spotřeboval uživatelského času, systémového času a reálného času, kolik paměti atd. -> dost důležité, pokud děláme monitoring, nebo kvóty pro jednotlivé uživatele, kteří spouští programy
+- ty můžeme nastavovat pomocí **setlimit** třeba
+- můžeme nastavit prioritu procesu, jen superuživatel může provést negativní změnu (posouvý výš v prioritě)
+- procesy můžeme řadit do **skupin**, každý proces může být jen v jedné -> je tam vedoucí skupiny
+- skupiny se hodí, pokud přistupujeme k terminálu, nebo chceme zasílat procesům nějaký signál
+- procesy se řadí i do **sessions** -> session většinou můžeme přiřadit k terminálu (ale není nutnost), číslo session je číslo vedoucího procesu
+- funkce **setsid** odpojí daný proces od sezení a můžeme ho tak odpojit od terminálu -> velmi důležité pro tvorbu daemonů
+- sezení většinou končí, když je ukončen leader sezení, odešlou se signály skupinám procesů uvnitř
+- jedno sezení může obsahovat více skupin procesů
+#### Daemon
+- speciální typ procesu běžící na pozadí
+- většinou odpojedný od sezení, tudíž může běžet nezávisle na tom, když je sezení ukončeno
+- většinou se u nového procesu zavolá setsid (odpojení od sezení), pracovní adresář se změni na / (neblokuje mazaní adresářů), uzavřou se soubory, které má mít rzervované, std. deskriptory přesměrovány do null
+
