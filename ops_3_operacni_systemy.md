@@ -82,7 +82,7 @@ Vypracoval @simonf-dev
 - při vytváření definujeme doménu (jestli je to síťový socket, lokální UNIX socket atd.), definujeme sémantiku socketu, jestli se komunikuje jako stream dat, nebo přes datagramy atd.
 - pro kombinaci domény a sémantiky většinou potom existuje konkrétní protokkol jako IP, ICMP, TCP atd., od systému si můžeme vyžádat tabulku protokolů, které je většinou i v **/etc/protocols**
 - sockety také mohou sloužit jako nepojmenovaná roura na komunikaci
-- sockety adresujeme podle jejich domény, pro AF_UNIX to je soubor a sémantika, pro AF_INET potom ip adresa, port  atd.
+- sockety adresujeme podle jejich domény, pro AF_UNIX to je soubor a sémantika (soubory *.sock), pro AF_INET potom ip adresa, port  atd.
 - socket vytvoříme a potom mu pomocí funkce **bind** přiřadíme port a adresu na které má naslouchat, pokud se jedná o klientský socket, můžeme mu nastavit i proti adresu - u serverového socketu většinou posloucháme všechnu komunikaci na daném portu
 - některé porty mají přiřazený typ komunikace, která by na nich měla probíhat jako 21/tcp je ftp
 - důležité operace u socketů jsou např. **listen** (serverový socket poslouchá), potom použije **accept** k přijmutí komunikace a pomocí **fork** vytvoří specifický socket pro danou protistranu, potom to jsou operace jako **recv**, nebo **recvmsg** k přijmutí dat, to stejné se **send** a odesláním
