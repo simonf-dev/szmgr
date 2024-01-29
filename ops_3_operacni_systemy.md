@@ -4,8 +4,8 @@ Vypracoval @simonf-dev
 
 ## Operační systém UNIX, fungování jádra, správa paměti a zařízení jádrem
 - víceuživatelský, víceúlohový systém, který podporuje příkazový řádek a hierarchický souborový systém
-- kernel je základní část systému, stará se o řízení hardvaru, plánování úloh, paměť, procesy atd.
-- jádro je načítané při spuštění systémum start se skládá z kroků:
+- kernel je základní část systému, stará se o řízení hardwaru, plánování úloh, paměť, procesy atd.
+- jádro je načítané při spuštění systému a start se skládá z kroků:
   - identifikují se zařízení jako CPU, disky a spouští se primární zavaděč
   - primární zavaděč je malý program na začátku boot disku
   - poté je spuštěn sekundární zavaděč, ten má načíst jádro
@@ -38,8 +38,9 @@ Vypracoval @simonf-dev
 - **chmod** poskytuje konfiguraci souborů a to i systémových
 - v UNIX existují i startovací skripty **init**,nebo **systemd** -> systemd nabízí víc možností na konfiguraci, logování, init je ve formě klasického shell skriptu
 - konfigurace se nachází ve složce **/etc**, jsou tam nastavení pro jednotlivé aplikace, hesla, resolvování hostů atd.
-- základní tabulka uživatelů v **/etc/passwd**, je tam jméno uživatele, heslo v zahashované podobě, UID, GID, GECOS, domovský adresář a shell -> **/etc/group** to stejn0 pro skupiny
+- základní tabulka uživatelů v **/etc/passwd**, je tam jméno uživatele, heslo v zahashované podobě, UID, GID, GECOS, domovský adresář a shell -> **/etc/group** to stejné pro skupiny
 - **/var/run/utmp** obsahuje právě přihlášené uživatele
+- informace o OS pomocí **uname**
 ### Instalace
 1) spuštění jádra
 2) pro instalaci se vytvoří malý souborový systém
@@ -84,3 +85,11 @@ Vypracoval @simonf-dev
 - sockety adresujeme podle jejich domény, pro AF_UNIX to je soubor a sémantika, pro AF_INET potom ip adresa, port  atd.
 - socket vytvoříme a potom mu pomocí funkce **bind** přiřadíme port a adresu na které má naslouchat, pokud se jedná o klientský socket, můžeme mu nastavit i proti adresu - u serverového socketu většinou posloucháme všechnu komunikaci na daném portu
 - některé porty mají přiřazený typ komunikace, která by na nich měla probíhat jako 21/tcp je ftp
+- důležité operace u socketů jsou např. **listen** (serverový socket poslouchá), potom použije **accept** k přijmutí komunikace a pomocí **fork** vytvoří specifický socket pro danou protistranu, potom to jsou operace jako **recv**, nebo **recvmsg** k přijmutí dat, to stejné se **send** a odesláním
+- můžeme definovat různé nastavení komunikace, jako že neblokujeme danou kombinaci IP a portu, tudíž tam může být přiřazen jiný socket, nebo při čtení ze socketu můžeme ponechat ve frontě danou zprávu atd.
+### Síťové nastavení a aplikační služby
+- pomocí příkazu **route** můžeme měnit směrovací tabulky, přiřazovat rozhraním adresy, kam má jít odchozí komunikace atd.
+- příklad **netstat** nám vypíše souhrn otevřených socketů, jejich parametrů, síťových rozhraní atd., pomocí **tcpdump** můžeme odposlouchávat síťovou komunikaci, ale musíme být superuser
+- v souboru /etc/resolv.conf jsou obsaženy DNS servery, které jsou použity pro překlad stringových adres na IP adresy -> neplést si s hostname, to je určeno pro lokální síť
+- **NFS** je určený ke sdílení souborů po síti, můžeme ho namountovat jako lokální disk, ale má omezení, např. v zamkykání pomocí existencí souboru
+- **Port mapper** - takový telefonní seznam pro RPC služby, poskytuje správné přesměrování RPC volání na správné porty, hlavní port je 111 TCP/UDP, ale dané služby můžou běžet někde jinde
