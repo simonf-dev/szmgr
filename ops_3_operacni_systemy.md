@@ -1,6 +1,6 @@
 # Operační systémy
 Vypracoval @simonf-dev
-> Operační systém UNIX, fungování jádra, správa paměti a zařízení jádrem. Základní konfigurace, správa uživatelů, síťové služby. Principy vývoje a vývojové prostředí v UNIXu, práce s procesy, se soubory, vstupní/výstupní operace. Operační systém MS Windows, základní konfigurace, správa uživatelů, souborový systém NTFS, HW zařízení a ovladače, základy skriptování. Příklady z praxe pro vše výše uvedené
+> Operační systém UNIX, fungování jádra, správa paměti a zařízení jádrem. Základní konfigurace, správa uživatelů, síťové služby. Principy vývoje a vývojové prostředí v UNIXu, práce s procesy, se soubory, vstupní/výstupní operace. Příklady z praxe pro vše výše uvedené
 
 ## Operační systém UNIX, fungování jádra, správa paměti a zařízení jádrem
 - víceuživatelský, víceúlohový systém, který podporuje příkazový řádek a hierarchický souborový systém
@@ -93,3 +93,24 @@ Vypracoval @simonf-dev
 - v souboru /etc/resolv.conf jsou obsaženy DNS servery, které jsou použity pro překlad stringových adres na IP adresy -> neplést si s hostname, to je určeno pro lokální síť
 - **NFS** je určený ke sdílení souborů po síti, můžeme ho namountovat jako lokální disk, ale má omezení, např. v zamkykání pomocí existencí souboru
 - **Port mapper** - takový telefonní seznam pro RPC služby, poskytuje správné přesměrování RPC volání na správné porty, hlavní port je 111 TCP/UDP, ale dané služby můžou běžet někde jinde
+## Principy vývoje a vývojové prostředí v UNIXu
+- pokud chceme vyvíjet v kompilovaném jazyce a převádět náš kód na strojový kód, tak je třeba nutné použít kompilátor a celý proces se skládá z těchto kroků:
+  - preprocesor - odstraní komentáře, rozbalí se makra, podmíněné kompilace - vznikne čistý zdrojový kód
+  - kompilace - překládá se do mezikódu, analyzuje se syntax a sémantika, kontroluje chyby a provádí optimalizace, již většinou udělá kód specifický pro procesor/platformu
+  - asemblace - převede se na strojový kód, který je spustitelný profcesorem
+  - linkování - spojí se s dalšími knihovnami
+- program je v paměti rozdělen na zásobník, data, text a haldu
+  - v textové části je samotný program + inline proměnné a stringy
+  - v datové sekci jsou dvě části - jedna uchovává inicializované globální proměnné, druhá neinicializované (BSS)
+  - na haldě jsou alokované stránky, které jsou uloženy ve virtuální paměti
+  - zásobník - lokální proměnné, informace o volání a návratu funkcí atd.
+- **make** slouží ke kompilaci z více zdrojů, má Makefile, je schopný definovat závislosti, akce atd.
+- při kompilaci můžeme dodat přepinače, které nám umožňuji debugování, program je ale pomalejší většinou
+### Knihovny
+- je to nějaká sada funkcí a proměnných s definovaným rozhraní
+- chceme je používat, protože je zbytečné psát stejný kód pro více programů -> není optimalizované
+- většina programů linkuje dynamicky, tudíž nemapuje knihovny k sobě do kódu, ale používá jen odkazy do sdílených knihoven v /lib , /usr/lib -> závislost na přítomnosti knihoven
+- pokud nalinkujeme staticky, tak do zdrojového kódu našeho programu přidáme všechny potřebné funkce -> není efektivní, ale program je dá se říct nezávislý
+- když dynamicky linkujeme v době kompilace, tak má program rychlejší start, ale je těžší zaručit, že je k dispozici správná verze knihovny, nedá už se nic měnit během běhu, problém s verzemi
+- formát **ELF** poskytuje křížové odkazy během běhu, můžeme mít více verzí atd.
+- C používá hlavičkové soubory, které poskytují interface ke knihovnám 
