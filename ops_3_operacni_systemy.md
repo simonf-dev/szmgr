@@ -115,6 +115,7 @@ Vypracoval @simonf-dev
 - formát **ELF** poskytuje křížové odkazy během běhu, můžeme mít více verzí atd.
 - C používá hlavičkové soubory, které poskytují interface ke knihovnám
 ### Procesy
+![](img/proces.png)
 - nějaký běžící program
 - má atributy jako stav, program counter (kde se proces nachází v paměti), číslo procesu, rodič, priorita, vlastník atd.
 - může se skládat z více vláken, mají stejnou paměť, ale jiný zásobník
@@ -128,6 +129,8 @@ Vypracoval @simonf-dev
 - obsahuje i doplňková group ID
 - systém si u procesu pamatuje, kolik spotřeboval uživatelského času, systémového času a reálného času, kolik paměti atd. -> dost důležité, pokud děláme monitoring, nebo kvóty pro jednotlivé uživatele, kteří spouští programy
 - ty můžeme nastavovat pomocí **setlimit** třeba
+![](img/proces_uid.png)
+
 - můžeme nastavit prioritu procesu, jen superuživatel může provést negativní změnu (posouvý výš v prioritě)
 - procesy můžeme řadit do **skupin**, každý proces může být jen v jedné -> je tam vedoucí skupiny
 - skupiny se hodí, pokud přistupujeme k terminálu, nebo chceme zasílat procesům nějaký signál
@@ -147,6 +150,7 @@ Vypracoval @simonf-dev
 - různé nastavení u otvírání souboru (append, přepis atd.)
 - deskriptory můžeme uzavírat, číst z nich, psát a také posouvat ukazatel po souboru -> příkaz **lseek**
 #### I-node
+![](img/inode.png)
 - struktura která popisuje soubor, uchovává si o něm atributy jako:
   - délka
   - typ
