@@ -149,6 +149,7 @@ Vypracoval @simonf-dev
 - základní deskriptoy 0-STDIN_FILENO, 1-STDOUT_FILENO, 2-STDERR_FILENO - lze je přesměrovat pro daný proces, kam chceme
 - různé nastavení u otvírání souboru (append, přepis atd.)
 - deskriptory můžeme uzavírat, číst z nich, psát a také posouvat ukazatel po souboru -> příkaz **lseek**
+- deskriptory jsou unikátní pro procesy
 #### I-node
 ![](img/inode.png)
 - struktura která popisuje soubor, uchovává si o něm atributy jako:
