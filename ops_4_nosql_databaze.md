@@ -105,7 +105,6 @@ viz  [otázka 7](./7_distribuovane_systemy.md#rozd%C3%ADl-mezi-centralizovanou-a
 - dynamický mód se hodí, když například ukládáme časovou řadu, nemusíme předem definovat sloupce a jejich názvy
 - Cassandra dokáže dávat jednotlivým sloupcům různá pravidla na opravu atd.
 - Cassandra používá P2P topologii, uživatel může nastavit i různé pravidla pro zápis a čtení (jako quorum, opravy nekonzistence atd.)
-- většina Column-family má optimalizované dotazy na celé sloupce a partitioning podle sloupců, Cassandra ho má podle řádků a podobá se tak trošku víc klasickým DB
 ### Graph based
 ![](img/graph.png)
 - o dost víc odlišné než předchozí typy
